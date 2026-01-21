@@ -1,0 +1,99 @@
+name = "Jujutsu - Commandes de base"
+version = 1
+language = "fr"
+
+[[items]]
+id = "jj_status"
+prompt = "Afficher l'état du dépôt"
+answer = "jj status"
+aliases = ["jj st"]
+tags = ["jujutsu", "status", "basics"]
+difficulty = 1
+
+[[items]]
+id = "jj_log"
+prompt = "Afficher l'historique des changements"
+answer = "jj log"
+aliases = []
+tags = ["jujutsu", "log", "history"]
+difficulty = 1
+
+[[items]]
+id = "jj_diff"
+prompt = "Voir les différences du changement courant"
+answer = "jj diff"
+aliases = []
+tags = ["jujutsu", "diff"]
+difficulty = 1
+
+[[items]]
+id = "jj_describe"
+prompt = "Définir la description du changement courant"
+answer = "jj describe"
+aliases = ["jj describe -m \"message\""]
+tags = ["jujutsu", "describe", "commit"]
+difficulty = 1
+
+[[items]]
+id = "jj_new"
+prompt = "Créer un nouveau changement vide"
+answer = "jj new"
+aliases = []
+tags = ["jujutsu", "new", "commit"]
+difficulty = 1
+
+[[items]]
+id = "jj_squash"
+prompt = "Fusionner le changement courant dans son parent"
+answer = "jj squash"
+aliases = []
+tags = ["jujutsu", "squash"]
+difficulty = 2
+
+[[items]]
+id = "jj_edit"
+prompt = "Commencer à éditer un changement"
+answer = "jj edit <revision>"
+aliases = []
+tags = ["jujutsu", "edit"]
+difficulty = 2
+
+[[items]]
+id = "jj_branch_create"
+prompt = "Créer une nouvelle branche"
+answer = "jj branch create <name>"
+aliases = []
+tags = ["jujutsu", "branch"]
+difficulty = 2
+
+[[items]]
+id = "jj_branch_list"
+prompt = "Lister toutes les branches"
+answer = "jj branch list"
+aliases = []
+tags = ["jujutsu", "branch"]
+difficulty = 1
+
+[[items]]
+id = "jj_rebase"
+prompt = "Rebaser le changement courant"
+answer = "jj rebase -d <destination>"
+aliases = []
+tags = ["jujutsu", "rebase"]
+difficulty = 2
+
+[[items]]
+id = "jj_abandon"
+prompt = "Abandonner un changement"
+answer = "jj abandon <revision>"
+aliases = []
+tags = ["jujutsu", "abandon"]
+difficulty = 2
+
+[[items]]
+id = "jj_restore"
+prompt = "Restaurer des fichiers depuis une révision"
+answer = "jj restore <paths>"
+aliases = []
+tags = ["jujutsu", "restore"]
+difficulty = 2

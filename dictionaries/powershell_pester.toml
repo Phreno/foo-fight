@@ -1,0 +1,99 @@
+name = "PowerShell & Pester"
+version = 1
+language = "fr"
+
+[[items]]
+id = "ps_get_command"
+prompt = "Obtenir des informations sur une commande"
+answer = "Get-Command <name>"
+aliases = ["gcm <name>"]
+tags = ["powershell", "basics", "help"]
+difficulty = 1
+
+[[items]]
+id = "ps_get_help"
+prompt = "Afficher l'aide d'une commande"
+answer = "Get-Help <cmdlet>"
+aliases = ["help <cmdlet>", "man <cmdlet>"]
+tags = ["powershell", "help"]
+difficulty = 1
+
+[[items]]
+id = "ps_get_childitem"
+prompt = "Lister les fichiers et dossiers"
+answer = "Get-ChildItem"
+aliases = ["gci", "ls", "dir"]
+tags = ["powershell", "filesystem"]
+difficulty = 1
+
+[[items]]
+id = "ps_set_location"
+prompt = "Changer de répertoire"
+answer = "Set-Location <path>"
+aliases = ["cd <path>", "sl <path>"]
+tags = ["powershell", "filesystem"]
+difficulty = 1
+
+[[items]]
+id = "ps_get_content"
+prompt = "Lire le contenu d'un fichier"
+answer = "Get-Content <file>"
+aliases = ["gc <file>", "cat <file>"]
+tags = ["powershell", "filesystem"]
+difficulty = 1
+
+[[items]]
+id = "ps_select_object"
+prompt = "Sélectionner des propriétés d'objets"
+answer = "Select-Object <properties>"
+aliases = ["select <properties>"]
+tags = ["powershell", "pipeline"]
+difficulty = 2
+
+[[items]]
+id = "ps_where_object"
+prompt = "Filtrer des objets dans le pipeline"
+answer = "Where-Object { $_ <condition> }"
+aliases = ["where { $_ <condition> }", "? { $_ <condition> }"]
+tags = ["powershell", "pipeline", "filter"]
+difficulty = 2
+
+[[items]]
+id = "pester_describe"
+prompt = "Définir un bloc de tests Pester"
+answer = "Describe \"<name>\" { }"
+aliases = []
+tags = ["pester", "testing"]
+difficulty = 1
+
+[[items]]
+id = "pester_it"
+prompt = "Définir un test unitaire Pester"
+answer = "It \"<description>\" { }"
+aliases = []
+tags = ["pester", "testing"]
+difficulty = 1
+
+[[items]]
+id = "pester_should_be"
+prompt = "Assertion d'égalité Pester"
+answer = "$result | Should -Be $expected"
+aliases = ["$result | Should -BeExactly $expected"]
+tags = ["pester", "assertion"]
+difficulty = 2
+
+[[items]]
+id = "pester_invoke_pester"
+prompt = "Exécuter les tests Pester"
+answer = "Invoke-Pester"
+aliases = []
+tags = ["pester", "testing", "run"]
+difficulty = 1
+
+[[items]]
+id = "pester_mock"
+prompt = "Créer un mock d'une commande"
+answer = "Mock <CommandName> { <ScriptBlock> }"
+aliases = []
+tags = ["pester", "mock"]
+difficulty = 2
