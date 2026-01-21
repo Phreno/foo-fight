@@ -1,0 +1,52 @@
+name = "PowerShell/Pester Commands"
+description = "PowerShell and Pester testing commands"
+
+[[items]]
+question = "List items in directory"
+command = "Get-ChildItem"
+aliases = ["ls", "dir", "gci"]
+
+[[items]]
+question = "Get command help"
+command = "Get-Help"
+aliases = ["help", "man"]
+
+[[items]]
+question = "Run all Pester tests"
+command = "Invoke-Pester"
+aliases = []
+
+[[items]]
+question = "Run Pester tests with code coverage"
+command = "Invoke-Pester -CodeCoverage"
+aliases = []
+
+[[items]]
+question = "Get process list"
+command = "Get-Process"
+aliases = ["ps", "gps"]
+
+[[items]]
+question = "Get service list"
+command = "Get-Service"
+aliases = ["gsv"]
+
+[[items]]
+question = "Set location (change directory)"
+command = "Set-Location"
+aliases = ["cd", "chdir", "sl"]
+
+[[items]]
+question = "Get content of file"
+command = "Get-Content"
+aliases = ["cat", "type", "gc"]
+
+[[items]]
+question = "Create new item (file/directory)"
+command = "New-Item"
+aliases = ["ni"]
+
+[[items]]
+question = "Remove item"
+command = "Remove-Item"
+aliases = ["rm", "del", "ri"]

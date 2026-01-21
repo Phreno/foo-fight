@@ -1,0 +1,52 @@
+name = "Git Commands"
+description = "Common Git commands for version control"
+
+[[items]]
+question = "Initialize a new Git repository"
+command = "git init"
+aliases = []
+
+[[items]]
+question = "Show the working tree status"
+command = "git status"
+aliases = ["git st"]
+
+[[items]]
+question = "Add all changes to staging"
+command = "git add ."
+aliases = ["git add -A", "git add --all"]
+
+[[items]]
+question = "Commit with message"
+command = "git commit -m"
+aliases = ["git commit --message"]
+
+[[items]]
+question = "Push to origin main"
+command = "git push origin main"
+aliases = ["git push"]
+
+[[items]]
+question = "Pull from origin main"
+command = "git pull origin main"
+aliases = ["git pull"]
+
+[[items]]
+question = "Create a new branch"
+command = "git branch"
+aliases = ["git checkout -b", "git switch -c"]
+
+[[items]]
+question = "Switch to a branch"
+command = "git checkout"
+aliases = ["git switch"]
+
+[[items]]
+question = "Show commit history"
+command = "git log"
+aliases = ["git log --oneline"]
+
+[[items]]
+question = "Stash current changes"
+command = "git stash"
+aliases = ["git stash push"]

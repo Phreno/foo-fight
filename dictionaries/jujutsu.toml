@@ -1,0 +1,52 @@
+name = "Jujutsu Commands"
+description = "Jujutsu version control commands"
+
+[[items]]
+question = "Initialize a new repository"
+command = "jj init"
+aliases = ["jj git init"]
+
+[[items]]
+question = "Show current status"
+command = "jj status"
+aliases = ["jj st"]
+
+[[items]]
+question = "Create a new change"
+command = "jj new"
+aliases = []
+
+[[items]]
+question = "Describe the current change"
+command = "jj describe"
+aliases = ["jj desc"]
+
+[[items]]
+question = "Show the diff"
+command = "jj diff"
+aliases = []
+
+[[items]]
+question = "Show the log"
+command = "jj log"
+aliases = []
+
+[[items]]
+question = "Abandon a change"
+command = "jj abandon"
+aliases = []
+
+[[items]]
+question = "Edit a change"
+command = "jj edit"
+aliases = []
+
+[[items]]
+question = "Squash changes into parent"
+command = "jj squash"
+aliases = []
+
+[[items]]
+question = "Git push to origin"
+command = "jj git push"
+aliases = []
