@@ -44,39 +44,32 @@ fn main() -> Result<()> {
     Ok(())
 }
 
-fn run_app<B: ratatui::backend::Backend>(
-    terminal: &mut Terminal<B>,
-    app: &mut App,
-) -> Result<()> {
+fn run_app<B: ratatui::backend::Backend>(terminal: &mut Terminal<B>, app: &mut App) -> Result<()> {
     loop {
         terminal.draw(|f| ui::draw(f, app))?;
 
         if let Event::Key(key) = event::read()? {
             match app.state {
-                AppState::SelectDictionary => {
-                    match key.code {
-                        KeyCode::Char('q') => return Ok(()),
-                        KeyCode::Esc => return Ok(()),
-                        KeyCode::Up => app.previous_dictionary(),
-                        KeyCode::Down => app.next_dictionary(),
-                        KeyCode::Enter => app.select_dictionary()?,
-                        _ => {}
+                AppState::SelectDictionary => match key.code {
+                    KeyCode::Char('q') => return Ok(()),
+                    KeyCode::Esc => return Ok(()),
+                    KeyCode::Up => app.previous_dictionary(),
+                    KeyCode::Down => app.next_dictionary(),
+                    KeyCode::Enter => app.select_dictionary()?,
+                    _ => {}
+                },
+                AppState::Training => match key.code {
+                    KeyCode::Char('q') if key.modifiers.contains(event::KeyModifiers::CONTROL) => {
+                        return Ok(());
                     }
-                }
-                AppState::Training => {
-                    match key.code {
-                        KeyCode::Char('q') if key.modifiers.contains(event::KeyModifiers::CONTROL) => {
-                            return Ok(());
-                        }
-                        KeyCode::Esc => app.back_to_selection(),
-                        KeyCode::Enter => app.validate_answer()?,
-                        KeyCode::Backspace => app.delete_char(),
-                        KeyCode::Char('r') if app.show_feedback => app.retry(),
-                        KeyCode::Char('s') if app.show_feedback => app.skip(),
-                        KeyCode::Char(c) => app.add_char(c),
-                        _ => {}
-                    }
-                }
+                    KeyCode::Esc => app.back_to_selection(),
+                    KeyCode::Enter => app.validate_answer()?,
+                    KeyCode::Backspace => app.delete_char(),
+                    KeyCode::Char('r') if app.show_feedback => app.retry(),
+                    KeyCode::Char('s') if app.show_feedback => app.skip(),
+                    KeyCode::Char(c) => app.add_char(c),
+                    _ => {}
+                },
                 AppState::Quit => return Ok(()),
             }
         }

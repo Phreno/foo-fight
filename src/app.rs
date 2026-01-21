@@ -8,6 +8,7 @@ use crate::engine::TrainingSession;
 pub enum AppState {
     SelectDictionary,
     Training,
+    #[allow(dead_code)]
     Quit,
 }
 
@@ -48,8 +49,7 @@ impl App {
     }
 
     pub fn next_dictionary(&mut self) {
-        if !self.dictionaries.is_empty() && self.selected_dict_index < self.dictionaries.len() - 1
-        {
+        if !self.dictionaries.is_empty() && self.selected_dict_index < self.dictionaries.len() - 1 {
             self.selected_dict_index += 1;
         }
     }
@@ -61,15 +61,15 @@ impl App {
 
         let dict_meta = &self.dictionaries[self.selected_dict_index];
         let dictionary = Dictionary::from_file(&dict_meta.path)?;
-        
+
         let session = TrainingSession::new(&dictionary, true);
-        
+
         self.current_dictionary = Some(dictionary);
         self.session = Some(session);
         self.state = AppState::Training;
         self.input.clear();
         self.show_feedback = false;
-        
+
         Ok(())
     }
 
@@ -105,7 +105,7 @@ impl App {
         if let (Some(dict), Some(session)) = (&self.current_dictionary, &mut self.session) {
             let item_index = session.current_item_index();
             let is_correct = dict.validate_answer(item_index, &self.input);
-            
+
             self.is_correct = is_correct;
             self.show_feedback = true;
 
@@ -135,7 +135,7 @@ impl App {
     fn next_item(&mut self) {
         if let Some(session) = &mut self.session {
             session.next_item();
-            
+
             if session.is_complete() {
                 self.back_to_selection();
             } else {

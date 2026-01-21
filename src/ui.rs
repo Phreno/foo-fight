@@ -28,7 +28,11 @@ fn draw_select_dictionary(f: &mut Frame, app: &App) {
 
     // Header
     let header = Paragraph::new("Foo Fight - Speed Typing Trainer")
-        .style(Style::default().fg(Color::Cyan).add_modifier(Modifier::BOLD))
+        .style(
+            Style::default()
+                .fg(Color::Cyan)
+                .add_modifier(Modifier::BOLD),
+        )
         .alignment(Alignment::Center)
         .block(Block::default().borders(Borders::ALL));
     f.render_widget(header, chunks[0]);
@@ -46,14 +50,21 @@ fn draw_select_dictionary(f: &mut Frame, app: &App) {
             } else {
                 Style::default()
             };
-            
-            let prefix = if i == app.selected_dict_index { "► " } else { "  " };
+
+            let prefix = if i == app.selected_dict_index {
+                "► "
+            } else {
+                "  "
+            };
             ListItem::new(format!("{}{}", prefix, dict_meta.name)).style(style)
         })
         .collect();
 
-    let list = List::new(items)
-        .block(Block::default().borders(Borders::ALL).title("Select Dictionary"));
+    let list = List::new(items).block(
+        Block::default()
+            .borders(Borders::ALL)
+            .title("Select Dictionary"),
+    );
     f.render_widget(list, chunks[1]);
 
     // Footer
@@ -92,7 +103,11 @@ fn draw_training(f: &mut Frame, app: &App) {
     };
 
     let header = Paragraph::new(header_text)
-        .style(Style::default().fg(Color::Cyan).add_modifier(Modifier::BOLD))
+        .style(
+            Style::default()
+                .fg(Color::Cyan)
+                .add_modifier(Modifier::BOLD),
+        )
         .alignment(Alignment::Center)
         .block(Block::default().borders(Borders::ALL));
     f.render_widget(header, chunks[0]);
@@ -100,7 +115,11 @@ fn draw_training(f: &mut Frame, app: &App) {
     // Prompt
     let prompt_text = app.get_current_prompt().unwrap_or("No prompt");
     let prompt = Paragraph::new(prompt_text)
-        .style(Style::default().fg(Color::White).add_modifier(Modifier::BOLD))
+        .style(
+            Style::default()
+                .fg(Color::White)
+                .add_modifier(Modifier::BOLD),
+        )
         .alignment(Alignment::Left)
         .wrap(Wrap { trim: false })
         .block(Block::default().borders(Borders::ALL).title("Question"));
@@ -125,17 +144,16 @@ fn draw_training(f: &mut Frame, app: &App) {
     // Feedback area
     if app.show_feedback {
         let feedback_style = if app.is_correct {
-            Style::default().fg(Color::Green).add_modifier(Modifier::BOLD)
+            Style::default()
+                .fg(Color::Green)
+                .add_modifier(Modifier::BOLD)
         } else {
             Style::default().fg(Color::Red)
         };
 
         let feedback_text = if app.is_correct {
             vec![
-                Line::from(Span::styled(
-                    &app.feedback_message,
-                    feedback_style,
-                )),
+                Line::from(Span::styled(&app.feedback_message, feedback_style)),
                 Line::from(""),
                 Line::from(Span::styled(
                     "Press Enter to continue",
@@ -144,10 +162,7 @@ fn draw_training(f: &mut Frame, app: &App) {
             ]
         } else {
             vec![
-                Line::from(Span::styled(
-                    &app.feedback_message,
-                    feedback_style,
-                )),
+                Line::from(Span::styled(&app.feedback_message, feedback_style)),
                 Line::from(""),
                 Line::from(Span::styled(
                     "[R]etry | [S]kip",

@@ -11,7 +11,7 @@ pub struct TrainingSession {
 impl TrainingSession {
     pub fn new(dictionary: &Dictionary, shuffle: bool) -> Self {
         let mut items_order: Vec<usize> = (0..dictionary.items.len()).collect();
-        
+
         if shuffle {
             use rand::seq::SliceRandom;
             let mut rng = rand::thread_rng();
@@ -113,7 +113,7 @@ mod tests {
     fn test_session_creation() {
         let dict = create_test_dictionary();
         let session = TrainingSession::new(&dict, false);
-        
+
         assert_eq!(session.total_items(), 2);
         assert_eq!(session.current_index, 0);
         assert_eq!(session.correct_count, 0);
@@ -123,7 +123,7 @@ mod tests {
     fn test_mark_correct() {
         let dict = create_test_dictionary();
         let mut session = TrainingSession::new(&dict, false);
-        
+
         session.mark_correct();
         assert_eq!(session.correct_count, 1);
         assert_eq!(session.streak, 1);
@@ -133,7 +133,7 @@ mod tests {
     fn test_success_rate() {
         let dict = create_test_dictionary();
         let mut session = TrainingSession::new(&dict, false);
-        
+
         session.mark_correct();
         session.mark_incorrect();
         assert_eq!(session.success_rate(), 50.0);

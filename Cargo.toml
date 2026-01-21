@@ -2,6 +2,10 @@
 name = "foo-fight"
 version = "0.1.0"
 edition = "2021"
+description = "A CLI/TUI speed typing trainer for commands"
+authors = ["Phreno"]
+license = "MIT"
+repository = "https://github.com/Phreno/foo-fight"
 
 [dependencies]
 ratatui = "0.26"

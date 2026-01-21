@@ -135,6 +135,35 @@ dictionaries/       # Dictionnaires au format TOML
 - **anyhow** : Gestion des erreurs
 - **rand** : Mélange aléatoire des questions
 
+## Develop in Codespaces
+
+Ce projet est configuré pour une utilisation immédiate dans GitHub Codespaces. L'environnement de développement est automatiquement configuré avec :
+
+- Rust stable avec `rustfmt` et `clippy`
+- Extensions VS Code : rust-analyzer, Even Better TOML, crates
+- Configuration automatique : formatage à la sauvegarde, inlay hints activés
+- Dépendances pré-téléchargées au démarrage
+
+Pour commencer :
+1. Cliquez sur "Code" → "Codespaces" → "Create codespace on master"
+2. Attendez que l'environnement se charge (quelques secondes)
+3. Exécutez `cargo build`, `cargo test`, ou `cargo run` directement
+
+## Release Process
+
+Les releases sont automatiquement créées lors d'un push sur la branche `master`. Le processus :
+
+1. **CI automatique** : À chaque push, les workflows vérifient le formatage (`cargo fmt`), exécutent `clippy` et les tests
+2. **Build multi-plateformes** : Génération des binaires pour Linux x86_64, Windows x86_64, macOS x86_64 et aarch64
+3. **Publication** : Création automatique d'une release GitHub avec les artefacts nommés `foo-fight-<version>-<target>.(tar.gz|zip)`
+
+**Pour publier une nouvelle version :**
+- Mettez à jour le champ `version` dans `Cargo.toml`
+- Committez et pushez sur `master`
+- La release sera créée automatiquement avec les notes de changelog
+
+Les releases sont accessibles sur la page [Releases](https://github.com/Phreno/foo-fight/releases) du projet.
+
 ## Licence
 
 Ce projet est fourni tel quel pour un usage éducatif et personnel.
