@@ -8,6 +8,11 @@ use ratatui::{
 };
 use std::path::PathBuf;
 
+const APP_TITLE: &str = "Foo Fight - Speed Typing Training";
+const FEEDBACK_CORRECT: &str = "Correct!";
+const ACCURACY_HIGH: f64 = 80.0;
+const ACCURACY_MED: f64 = 60.0;
+
 #[derive(Debug, Clone, PartialEq)]
 pub enum AppState {
     SelectDictionary,
@@ -100,7 +105,7 @@ impl App {
                 
                 if is_correct {
                     self.stats.correct += 1;
-                    self.feedback = Some((true, "Correct!".to_string()));
+                    self.feedback = Some((true, FEEDBACK_CORRECT.to_string()));
                 } else {
                     self.stats.incorrect += 1;
                     self.feedback = Some((false, format!("Wrong! Expected: {}", item.command)));
@@ -149,7 +154,7 @@ fn render_dictionary_selection(f: &mut Frame, app: &App) {
         ])
         .split(f.size());
 
-    let title = Paragraph::new("Foo Fight - Speed Typing Training")
+    let title = Paragraph::new(APP_TITLE)
         .style(Style::default().fg(Color::Cyan).add_modifier(Modifier::BOLD))
         .alignment(Alignment::Center)
         .block(Block::default().borders(Borders::ALL));
@@ -299,9 +304,9 @@ fn render_results(f: &mut Frame, app: &App) {
         app.stats.accuracy()
     );
     
-    let accuracy_color = if app.stats.accuracy() >= 80.0 {
+    let accuracy_color = if app.stats.accuracy() >= ACCURACY_HIGH {
         Color::Green
-    } else if app.stats.accuracy() >= 60.0 {
+    } else if app.stats.accuracy() >= ACCURACY_MED {
         Color::Yellow
     } else {
         Color::Red

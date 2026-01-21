@@ -17,14 +17,18 @@ use std::path::PathBuf;
 use dictionary::load_dictionaries;
 use ui::{App, AppState};
 
+const DICT_PATH: &str = "dictionaries";
+const NO_DICT_WARNING: &str = "Warning: No dictionaries found in dictionaries/ folder";
+const NO_DICT_HELP: &str = "Please add some .toml dictionary files to get started.";
+
 fn main() -> Result<()> {
     // Load dictionaries
-    let dict_path = PathBuf::from("dictionaries");
+    let dict_path = PathBuf::from(DICT_PATH);
     let dictionaries = load_dictionaries(&dict_path)?;
 
     if dictionaries.is_empty() {
-        eprintln!("Warning: No dictionaries found in dictionaries/ folder");
-        eprintln!("Please add some .toml dictionary files to get started.");
+        eprintln!("{}", NO_DICT_WARNING);
+        eprintln!("{}", NO_DICT_HELP);
     }
 
     // Setup terminal

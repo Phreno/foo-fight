@@ -3,6 +3,8 @@ use std::fs;
 use std::path::{Path, PathBuf};
 use anyhow::{Context, Result};
 
+const DICT_FILE_EXT: &str = "toml";
+
 #[derive(Debug, Deserialize, Clone)]
 pub struct Dictionary {
     pub name: String,
@@ -38,7 +40,7 @@ pub fn load_dictionaries(dict_path: &Path) -> Result<Vec<(PathBuf, Dictionary)>>
         let entry = entry?;
         let path = entry.path();
         
-        if path.extension().and_then(|s| s.to_str()) == Some("toml") {
+        if path.extension().and_then(|s| s.to_str()) == Some(DICT_FILE_EXT) {
             let content = fs::read_to_string(&path)
                 .with_context(|| format!("Failed to read {}", path.display()))?;
             let dict: Dictionary = toml::from_str(&content)
