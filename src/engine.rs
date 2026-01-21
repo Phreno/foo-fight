@@ -31,7 +31,16 @@ impl TrainingSession {
         self.items_order.len()
     }
 
+    /// Returns the current item index in the dictionary.
+    /// Returns 0 as a safe fallback if current_index is out of bounds,
+    /// though this should never happen in normal operation due to is_complete() checks.
     pub fn current_item_index(&self) -> usize {
+        debug_assert!(
+            self.current_index < self.items_order.len(),
+            "current_index out of bounds: {} >= {}",
+            self.current_index,
+            self.items_order.len()
+        );
         if self.current_index < self.items_order.len() {
             self.items_order[self.current_index]
         } else {

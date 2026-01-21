@@ -50,7 +50,16 @@ impl Dictionary {
         Ok(dict)
     }
 
+    /// Validates the user's answer against the expected answer or aliases.
+    /// Returns false if item_index is out of bounds as a defensive measure,
+    /// though this should never happen in normal operation.
     pub fn validate_answer(&self, item_index: usize, user_input: &str) -> bool {
+        debug_assert!(
+            item_index < self.items.len(),
+            "item_index out of bounds: {} >= {}",
+            item_index,
+            self.items.len()
+        );
         if item_index >= self.items.len() {
             return false;
         }
