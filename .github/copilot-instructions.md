@@ -116,7 +116,7 @@ difficulty = 1              # Optional: 1-3
 
 ## CI/CD
 - All pushes trigger CI: format check, clippy, tests
-- Releases are automatic on push to `master`
+- Releases are automatic on push to `main`
 - Multi-platform builds: Linux, Windows, macOS (x86_64 and aarch64)
 
 ## Dependencies
