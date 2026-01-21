@@ -1,0 +1,42 @@
+{
+  "name": "Foo Fight - Rust Development",
+  "image": "mcr.microsoft.com/devcontainers/rust:1-bookworm",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "username": "vscode",
+      "userUid": "automatic",
+      "userGid": "automatic",
+      "upgradePackages": true
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "tamasfe.even-better-toml",
+        "serayuzgur.crates",
+        "vadimcn.vscode-lldb"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "rust-lang.rust-analyzer",
+        "[rust]": {
+          "editor.formatOnSave": true,
+          "editor.defaultFormatter": "rust-lang.rust-analyzer"
+        },
+        "rust-analyzer.checkOnSave.command": "clippy",
+        "rust-analyzer.inlayHints.enable": true,
+        "rust-analyzer.inlayHints.parameterHints.enable": true,
+        "rust-analyzer.inlayHints.typeHints.enable": true
+      }
+    }
+  },
+
+  "postCreateCommand": "rustc --version && cargo --version && cargo fetch && echo 'Development environment ready!'",
+
+  "remoteUser": "vscode"
+}

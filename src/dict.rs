@@ -39,14 +39,14 @@ impl Dictionary {
     pub fn from_file<P: AsRef<Path>>(path: P) -> Result<Self> {
         let content = fs::read_to_string(path.as_ref())
             .with_context(|| format!("Failed to read dictionary file: {:?}", path.as_ref()))?;
-        
+
         let dict: Dictionary = toml::from_str(&content)
             .with_context(|| format!("Failed to parse dictionary file: {:?}", path.as_ref()))?;
-        
+
         if dict.items.is_empty() {
             anyhow::bail!("Dictionary has no items");
         }
-        
+
         Ok(dict)
     }
 
@@ -84,7 +84,7 @@ impl Dictionary {
 
 pub fn list_dictionaries<P: AsRef<Path>>(dictionaries_path: P) -> Result<Vec<DictMeta>> {
     let path = dictionaries_path.as_ref();
-    
+
     if !path.exists() {
         fs::create_dir_all(path)
             .with_context(|| format!("Failed to create dictionaries directory: {:?}", path))?;
