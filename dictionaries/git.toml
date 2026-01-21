@@ -1,0 +1,99 @@
+name = "Git - Bases"
+version = 1
+language = "fr"
+
+[[items]]
+id = "git_status"
+prompt = "Afficher l'état du dépôt"
+answer = "git status"
+aliases = ["git st"]
+tags = ["git", "status", "basics"]
+difficulty = 1
+
+[[items]]
+id = "git_log_oneline"
+prompt = "Afficher l'historique compact"
+answer = "git log --oneline --decorate --graph"
+aliases = ["git log --oneline"]
+tags = ["git", "log", "history"]
+difficulty = 2
+
+[[items]]
+id = "git_add_all"
+prompt = "Ajouter tous les fichiers modifiés à l'index"
+answer = "git add ."
+aliases = ["git add -A", "git add --all"]
+tags = ["git", "add", "staging"]
+difficulty = 1
+
+[[items]]
+id = "git_commit"
+prompt = "Créer un commit avec message"
+answer = "git commit -m \"message\""
+aliases = ["git commit -m 'message'"]
+tags = ["git", "commit"]
+difficulty = 1
+
+[[items]]
+id = "git_push"
+prompt = "Pousser les commits vers le dépôt distant"
+answer = "git push"
+aliases = ["git push origin"]
+tags = ["git", "push", "remote"]
+difficulty = 1
+
+[[items]]
+id = "git_pull"
+prompt = "Récupérer et fusionner les changements distants"
+answer = "git pull"
+aliases = ["git pull origin"]
+tags = ["git", "pull", "remote"]
+difficulty = 1
+
+[[items]]
+id = "git_branch"
+prompt = "Lister toutes les branches"
+answer = "git branch"
+aliases = ["git branch -a", "git branch --all"]
+tags = ["git", "branch"]
+difficulty = 1
+
+[[items]]
+id = "git_checkout"
+prompt = "Changer de branche"
+answer = "git checkout <branch>"
+aliases = ["git switch <branch>"]
+tags = ["git", "checkout", "branch"]
+difficulty = 2
+
+[[items]]
+id = "git_merge"
+prompt = "Fusionner une branche dans la branche courante"
+answer = "git merge <branch>"
+aliases = []
+tags = ["git", "merge"]
+difficulty = 2
+
+[[items]]
+id = "git_diff"
+prompt = "Voir les différences non indexées"
+answer = "git diff"
+aliases = []
+tags = ["git", "diff"]
+difficulty = 1
+
+[[items]]
+id = "git_reset"
+prompt = "Retirer un fichier de l'index"
+answer = "git reset <file>"
+aliases = ["git reset HEAD <file>"]
+tags = ["git", "reset", "staging"]
+difficulty = 2
+
+[[items]]
+id = "git_clone"
+prompt = "Cloner un dépôt distant"
+answer = "git clone <url>"
+aliases = []
+tags = ["git", "clone", "remote"]
+difficulty = 1
