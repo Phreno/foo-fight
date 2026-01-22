@@ -4,8 +4,6 @@
 app = "peanut-workout"
 primary_region = "cdg"
 
-[build]
-
 [mounts]
   source = "data"
   destination = "/data"
