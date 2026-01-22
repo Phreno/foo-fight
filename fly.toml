@@ -1,0 +1,11 @@
+# fly.toml app configuration file for peanut-workout
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+
+app = "peanut-workout"
+primary_region = "cdg"
+
+[build]
+
+[mounts]
+  source = "data"
+  destination = "/data"
