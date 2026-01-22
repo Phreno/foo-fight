@@ -9,3 +9,6 @@ primary_region = "cdg"
 [mounts]
   source = "data"
   destination = "/data"
+
+[env]
+  RUST_LOG = "info"
